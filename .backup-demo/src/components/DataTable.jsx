@@ -13,7 +13,7 @@ function DataTable({ columns, rows }) {
         </tr>
       </thead>
       <tbody>
-        {/* BLANK 12: make one <tr> for every row.
+        {/* BLANK 15: make one <tr> for every row.
             Which array method turns each item into JSX?
             (you already used it above, 3 letters) */}
         {rows.map((row, index) => (

@@ -8,13 +8,16 @@ Slides: **PASTE GOOGLE SLIDES LINK HERE**
 
 ## What you will build
 
-A plain React page that shows API data in centered tables with alternating row colours:
+A plain React app with several pages. Every page shows API data in centered tables with alternating row colours.
 
-| Section | Skill | API |
-|---|---|---|
-| Users table | GET request | JSONPlaceholder (no key) |
-| Weather table | GET request with an API key | OpenWeatherMap (free key) |
-| Send a post | POST request | JSONPlaceholder |
+| Page | Skill | API | Key? |
+|---|---|---|---|
+| Products | GET request | [DummyJSON](https://dummyjson.com) | No |
+| Add a product | POST request, `useNavigate` with state | DummyJSON | No |
+| Weather | GET with parameters | [Open-Meteo](https://open-meteo.com) | No |
+| Asteroids | GET with an API key from `.env` | [NASA NeoWs](https://api.nasa.gov) | Yes (`DEMO_KEY` or a free key) |
+
+You will also practise `useState`, `useEffect`, `useNavigate` and `useLocation`.
 
 ## Quick start
 
@@ -45,24 +48,34 @@ cd worksheet
 
 ## Add your API key
 
-1. Create a free key at [openweathermap.org](https://openweathermap.org) (Sign in, then My API keys).
-2. Open `worksheet/.env` and paste the key after the `=`:
+Only the NASA page needs a key. No password or account is needed.
 
-   ```
-   VITE_WEATHER_API_KEY=your_key_here
-   ```
+- **Option A:** use `DEMO_KEY`. It works immediately but is limited to about 10 requests an hour for everyone on the same Wi-Fi.
+- **Option B (recommended for a class):** open [api.nasa.gov](https://api.nasa.gov), fill in the Generate API Key form (name and email). The key appears on the page and is emailed to you.
 
-3. Never share the key or commit `.env` (it is in `.gitignore`).
+Open `worksheet/.env` and paste the key after the `=`:
+
+```
+VITE_NASA_API_KEY=DEMO_KEY
+```
+
+Restart `npm run dev` after editing `.env`. Never share your own key or commit `.env` (it is in `.gitignore`).
 
 ## Fill in the blanks
 
-Search the `worksheet/src` folder for `____`. There are 12 numbered blanks, each with a comment explaining what to write:
+Search the `worksheet/src` folder for `____`. There are 22 numbered blanks, each with a comment explaining what to write:
 
 | Blanks | File |
 |---|---|
-| 1 to 7 | `worksheet/src/api.js` |
-| 8 to 11 | `worksheet/src/App.jsx` |
-| 12 | `worksheet/src/components/DataTable.jsx` |
+| 1 to 8 | `worksheet/src/api.js` |
+| 9 | `worksheet/src/App.jsx` |
+| 10 to 12 | `worksheet/src/pages/Home.jsx` |
+| 13, 14 | `worksheet/src/pages/Products.jsx` |
+| 15 | `worksheet/src/components/DataTable.jsx` |
+| 16 to 18 | `worksheet/src/pages/NewProduct.jsx` |
+| 19 | `worksheet/src/pages/Added.jsx` |
+| 20, 21 | `worksheet/src/pages/Weather.jsx` |
+| 22 | `worksheet/src/pages/Asteroids.jsx` |
 
 ## Run the app
 

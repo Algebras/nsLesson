@@ -43,3 +43,13 @@ input {
   margin: 0 6px 8px 6px;
   padding: 6px;
 }
+
+button {
+  margin: 4px 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.error {
+  color: #b00020;
+}

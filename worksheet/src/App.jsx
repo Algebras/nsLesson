@@ -1,95 +1,25 @@
-// App.jsx  -  the whole page. Fill in each ____ so the page runs.
-
-// BLANK 8: import the hook that stores data in a component.
-// Its name is use + State.
-import { ____, useEffect } from "react";
-
-// BLANK 9: import the weather function from api.js.
-// Open api.js and check the exact name.
-import { getUsers, ____, createPost } from "./api.js";
-
-import DataTable from "./components/DataTable.jsx";
-
-const CITIES = ["London", "Singapore", "Tokyo"];
+// App.jsx  -  decides which page to show for each address (route).
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import Products from "./pages/Products.jsx";
+import NewProduct from "./pages/NewProduct.jsx";
+import Added from "./pages/Added.jsx";
+import Weather from "./pages/Weather.jsx";
+import Asteroids from "./pages/Asteroids.jsx";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [weather, setWeather] = useState([]);
-  const [newPost, setNewPost] = useState(null);
-  const [title, setTitle] = useState("Hello class");
-  const [body, setBody] = useState("My first POST request");
-
-  useEffect(() => {
-    // BLANK 10: when getUsers() finishes, pass its data
-    // to the state setter for users.
-    getUsers().then(____);
-
-    Promise.all(CITIES.map(getWeather))
-      .then((results) =>
-        setWeather(
-          results.map((w) => ({
-            city: w.name,
-            temp: Math.round(w.main.temp) + " °C",
-            humidity: w.main.humidity + " %",
-            description: w.weather[0].description,
-          }))
-        )
-      )
-      .catch((error) => console.error(error));
-
-    // BLANK 11: the 2nd argument controls WHEN useEffect runs.
-    // An empty array means "only once, when the page loads".
-  }, ____);
-
-  async function handleSubmit(event) {
-    event.preventDefault(); // stop the browser reloading the page
-    const result = await createPost(title, body);
-    setNewPost(result);
-  }
-
   return (
-    <div className="page">
-      <h1>React and API Data</h1>
+    <Routes>
+      <Route path="/" element={<Home />} />
 
-      <h2>Users (GET)</h2>
-      <DataTable
-        columns={[
-          { label: "ID", key: "id" },
-          { label: "Name", key: "name" },
-          { label: "Email", key: "email" },
-        ]}
-        rows={users}
-      />
+      {/* BLANK 9: the products page lives at the address /products */}
+      <Route path="____" element={<Products />} />
 
-      <h2>Weather (GET with API key)</h2>
-      <DataTable
-        columns={[
-          { label: "City", key: "city" },
-          { label: "Temperature", key: "temp" },
-          { label: "Humidity", key: "humidity" },
-          { label: "Sky", key: "description" },
-        ]}
-        rows={weather}
-      />
-
-      <h2>Send a post (POST)</h2>
-      <form onSubmit={handleSubmit}>
-        <input value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input value={body} onChange={(e) => setBody(e.target.value)} />
-        <button type="submit">Send</button>
-      </form>
-
-      {newPost && (
-        <DataTable
-          columns={[
-            { label: "ID from server", key: "id" },
-            { label: "Title", key: "title" },
-            { label: "Body", key: "body" },
-          ]}
-          rows={[newPost]}
-        />
-      )}
-    </div>
+      <Route path="/products/new" element={<NewProduct />} />
+      <Route path="/products/added" element={<Added />} />
+      <Route path="/weather" element={<Weather />} />
+      <Route path="/asteroids" element={<Asteroids />} />
+    </Routes>
   );
 }
 
