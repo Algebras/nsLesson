@@ -4,7 +4,7 @@ Class date: 29 September
 
 ## Class slides
 
-Slides: **PASTE GOOGLE SLIDES LINK HERE**
+Slides: [Introduction to Programming: React and APIs (Google Slides)](https://docs.google.com/presentation/d/1QjmxDihAjXLoBwRoONqr_JoW8-WhSNLW/edit?usp=sharing&ouid=107402641568810263309&rtpof=true&sd=true)
 
 ## What you will build
 
